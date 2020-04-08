@@ -16,6 +16,8 @@ routes.get("/cases/today", CaseController.today);
 routes.get("/cases/:date", validateDate(), CaseController.show);
 
 routes.get("/extractions", ExtractionController.index);
+routes.get("/extractions/today", ExtractionController.today);
+routes.get("/extractions/:date", validateDate(), ExtractionController.byDate);
 routes.get("/extractions/place/:id", validateId, ExtractionController.byPlace);
 
 module.exports = routes;
