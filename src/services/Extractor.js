@@ -39,5 +39,6 @@ exports.extract = async () => {
     };
   });
 
+  // TODO: Summary world data
   return mappedRows.get();
 };

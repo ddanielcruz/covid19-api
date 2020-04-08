@@ -23,19 +23,3 @@ exports.show = async (request, response) => {
     lastExtraction,
   });
 };
-
-exports.extractions = async (request, response) => {
-  const { id } = request.params;
-  const place = await Place.findById(id);
-
-  if (!place) {
-    return response.status(404).json({ error: "Place not found." });
-  }
-
-  const extractions = await Extraction.find({ place: id });
-
-  return response.json({
-    ...place.toJSON(),
-    extractions,
-  });
-};
