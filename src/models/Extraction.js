@@ -8,9 +8,9 @@ const ExtractionSchema = new mongoose.Schema(
     totalTests: Number,
     activeCases: Number,
     criticalCases: Number,
-    country: {
+    place: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Country",
+      ref: "Place",
       required: true,
     },
   },

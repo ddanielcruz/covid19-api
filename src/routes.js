@@ -1,9 +1,9 @@
 const express = require("express");
 
-const CountryController = require("./controllers/CountryController");
+const PlaceController = require("./controllers/PlaceController");
 
 const routes = express.Router();
 
-routes.get("/countries", CountryController.index);
+routes.get("/places", PlaceController.index);
 
 module.exports = routes;

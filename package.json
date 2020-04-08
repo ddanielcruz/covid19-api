@@ -6,8 +6,8 @@
   "author": "Daniel Cunha <danielcunha54@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node bin/server.js",
-    "dev": "nodemon bin/server.js"
+    "start": "node bin/server",
+    "dev": "nodemon bin/server"
   },
   "dependencies": {
     "axios": "^0.19.2",
