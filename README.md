@@ -44,6 +44,7 @@ After that, accessing `http://localhost:3000/places` again, it should return a l
 
 - [Node.js](https://nodejs.org/)
 - [Express](http://expressjs.com/)
+- [Cheerio](https://cheerio.js.org/)
 - [MongoDB](https://www.mongodb.com/)
 
 ## Authors
