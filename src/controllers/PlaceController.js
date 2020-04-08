@@ -3,6 +3,8 @@ const Extraction = require("../models/Extraction");
 
 exports.index = async (request, response) => {
   const places = await Place.find();
+
+  response.header("X-Total-Count", places.length);
   return response.json(places);
 };
 
