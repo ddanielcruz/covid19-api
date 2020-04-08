@@ -12,6 +12,31 @@ const parseNumber = (value) => {
   return parseInt(value.replace(/,/g, ""));
 };
 
+const summarize = (extractions) => {
+  const world = extractions.reduce(
+    (acc, curr) => {
+      acc.totalCases += curr.totalCases;
+      acc.totalDeaths += curr.totalDeaths;
+      acc.totalRecovered += curr.totalRecovered;
+      acc.totalTests += curr.totalTests;
+      acc.activeCases += curr.activeCases;
+      acc.criticalCases += curr.criticalCases;
+      return acc;
+    },
+    {
+      place: "World",
+      totalCases: 0,
+      totalDeaths: 0,
+      totalRecovered: 0,
+      totalTests: 0,
+      activeCases: 0,
+      criticalCases: 0,
+    }
+  );
+
+  return world;
+};
+
 exports.extract = async () => {
   const $ = await fetch();
 
@@ -39,6 +64,8 @@ exports.extract = async () => {
     };
   });
 
-  // TODO: Summary world data
-  return mappedRows.get();
+  const extractions = mappedRows.get();
+  const world = summarize(extractions);
+
+  return [world, ...extractions];
 };
