@@ -16,7 +16,10 @@ exports.extract = async () => {
   const $ = await fetch();
 
   // Fetch rows including countries, territories and conveyances
-  const rows = $("#main_table_countries_today tbody").first().find("tr");
+  const rows = $("#main_table_countries_today tbody")
+    .first()
+    .find("tr")
+    .slice(1);
 
   // Map rows to extraction items
   const mappedRows = rows.map((idx, row) => {
