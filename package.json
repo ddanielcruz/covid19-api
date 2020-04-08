@@ -1,0 +1,27 @@
+{
+  "name": "covid19-api",
+  "version": "1.0.0",
+  "main": "bin/server.js",
+  "repository": "git@github.com:danielccunha/covid19-api.git",
+  "author": "Daniel Cunha <danielcunha54@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node bin/server.js",
+    "dev": "nodemon bin/server.js"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "chalk": "^4.0.0",
+    "cheerio": "^1.0.0-rc.3",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.9.7",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
