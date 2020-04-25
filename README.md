@@ -1,6 +1,6 @@
 # Coronavirus API
 
-Coronavirus cases by country, extracted from [Worldometers](https://www.worldometers.info/coronavirus/). Currently there's only a [simple documentation](https://documenter.getpostman.com/view/3882585/SzYewbGg?version=latest) published on Postman, and a demo API hosted on [Heroku](https://covid19-cases-api.herokuapp.com/).
+Coronavirus cases by country API, extracted from [Worldometers](https://www.worldometers.info/coronavirus/). Currently there's only a [simple documentation](https://documenter.getpostman.com/view/3882585/SzYewbGg?version=latest) published on Postman.
 
 ## Getting Started
 
