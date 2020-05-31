@@ -47,10 +47,6 @@ After that, accessing `http://localhost:3000/places` again, it should return a l
 - [Cheerio](https://cheerio.js.org/)
 - [MongoDB](https://www.mongodb.com/)
 
-## Authors
-
-- **Daniel Cunha** - [danielccunha](https://github.com/danielccunha)
-
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
