@@ -9,6 +9,8 @@ export type IExtraction = Document & {
   activeCases: number;
   criticalCases: number;
   place: Types.ObjectId | IPlace;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 const ExtractionSchema = new Schema(

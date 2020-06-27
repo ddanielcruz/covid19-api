@@ -11,6 +11,7 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "cors": "^2.8.5",
+    "dayjs": "^1.8.28",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.20",
