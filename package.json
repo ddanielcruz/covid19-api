@@ -5,7 +5,14 @@
   "repository": "git@github.com:danielccunha/covid19-api.git",
   "author": "Daniel Cunha <danielcunha54@gmail.com>",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "dev": "ts-node-dev -r tsconfig-paths/register --inspect=0.0.0.0:9229 --respawn --transpileOnly --ignore-watch node_modules --no-notify src/server.ts"
+  },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/node": "^14.0.14",
+    "ts-node-dev": "^1.0.0-pre.49",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^3.9.5"
+  }
 }
