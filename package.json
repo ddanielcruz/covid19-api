@@ -6,7 +6,7 @@
   "author": "Daniel Cunha <danielcunha54@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev -r tsconfig-paths/register --inspect=0.0.0.0:9229 --respawn --transpileOnly --ignore-watch node_modules --no-notify src/server.ts"
+    "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect=0.0.0.0:9229 --respawn --transpileOnly --ignore-watch node_modules --no-notify src/server.ts"
   },
   "dependencies": {},
   "devDependencies": {
