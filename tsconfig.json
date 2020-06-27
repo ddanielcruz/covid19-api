@@ -16,8 +16,8 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "src",
     "paths": {
-      "@models/*": ["models/*"],
       "@config/*": ["config/*"],
+      "@models/*": ["shared/models/*"],
       "@helpers/*": ["shared/helpers/*"],
       "@services/*": ["shared/services/*"]
     }
