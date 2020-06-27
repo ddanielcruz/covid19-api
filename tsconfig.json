@@ -16,10 +16,10 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "src",
     "paths": {
-      "@controllers/*": ["routes/controllers/*"],
       "@models/*": ["models/*"],
-      "@enums/*": ["models/enums/*"],
-      "@config/*": ["config/*"]
+      "@config/*": ["config/*"],
+      "@helpers/*": ["shared/helpers/*"],
+      "@services/*": ["shared/services/*"]
     }
   },
   "include": ["src/**/*", "tests/**/*"],
