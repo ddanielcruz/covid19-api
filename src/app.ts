@@ -1,8 +1,11 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
+import mongoose from 'mongoose';
 
 import routes from './routes';
+import logger from '@config/logger';
+import { createMongoUrl } from '@config/mongo';
 
 class App {
   public express: express.Application;
@@ -16,12 +19,18 @@ class App {
   }
 
   middleware() {
+    this.express.use(logger());
     this.express.use(cors());
     this.express.use(express.json());
   }
 
   database() {
-    //
+    mongoose.connect(createMongoUrl(), {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+    });
   }
 
   routes() {
