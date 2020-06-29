@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect=0.0.0.0:9229 --respawn --transpileOnly --ignore-watch node_modules --no-notify src/server.ts",
-    "dev:worker": "ts-node -r tsconfig-paths/register src/worker.ts"
+    "dev:worker": "ts-node -r tsconfig-paths/register -T src/worker.ts"
   },
   "dependencies": {
     "axios": "^0.19.2",

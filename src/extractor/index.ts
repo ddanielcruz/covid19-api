@@ -2,9 +2,11 @@ import 'dotenv/config';
 import mongoose from 'mongoose';
 import cheerio from 'cheerio';
 import axios from 'axios';
+import mapKeys from 'lodash/mapKeys';
 
 import { createMongoUrl } from '@config/mongo';
-import { ExtractionAttr } from '@models/Extraction';
+import Extraction, { ExtractionAttr } from '@models/Extraction';
+import Place, { IPlace } from '@models/Place';
 
 class Extractor {
   private url: string = 'https://www.worldometers.info/coronavirus';
@@ -34,9 +36,14 @@ class Extractor {
     // Parse extracted rows and summarize world total cases
     const cases = this.parseCases($, rows);
     const world = this.summarizeCases(cases);
+    cases.unshift(world);
 
-    // Finally, store extracted values
-    this.store([world, ...cases]);
+    // Store extracted places
+    const extractedPlaces = cases.map(({ place }) => ({ name: place }));
+    const places = await this.storePlaces(extractedPlaces as IPlace[]);
+
+    // Finally, store extracted cases
+    await this.storeCases(cases, places);
   };
 
   private fetch = async (): Promise<CheerioStatic> => {
@@ -55,7 +62,7 @@ class Extractor {
           .get();
 
         return {
-          place: cells[1],
+          place: cells[1].trim(),
           totalCases: parseNumber(cells[2]) || 0,
           totalDeaths: parseNumber(cells[4]) || 0,
           totalRecovered: parseNumber(cells[6]) || 0,
@@ -90,8 +97,30 @@ class Extractor {
     );
   }
 
-  private store = (cases: ExtractionAttr[]) => {
-    //
+  private storePlaces = async (places: IPlace[]): Promise<IPlace[]> => {
+    // Find existing places and store new ones
+    const existingPlaces = await Place.find();
+    let newPlaces = places.filter(({ name }) => {
+      return !existingPlaces.some((place) => place.name === name);
+    });
+
+    if (newPlaces.length) {
+      console.log(newPlaces);
+      newPlaces = await Place.create(newPlaces);
+    }
+
+    return [...existingPlaces, ...newPlaces];
+  };
+
+  private storeCases = async (cases: ExtractionAttr[], places: IPlace[]) => {
+    const mappedPlaces = mapKeys(places, 'name');
+
+    cases.forEach((_case) => {
+      const place = mappedPlaces[_case.place as string];
+      _case.place = place._id;
+    });
+
+    await Extraction.create(cases);
   };
 }
 

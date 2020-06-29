@@ -1,6 +1,9 @@
 import { CronJob } from 'cron';
 import extractor from './extractor';
 
-extractor.run();
-// const job = new CronJob('* * * * *', extractor.run);
-// job.start();
+const job = new CronJob({
+  cronTime: '0 * * * *',
+  onTick: extractor.run,
+  runOnInit: true,
+});
+job.start();

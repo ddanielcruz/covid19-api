@@ -2,8 +2,8 @@ import mongoose, { Schema, Document } from 'mongoose';
 
 export type IPlace = Document & {
   name: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 };
 
 const PlaceSchema = new Schema(
