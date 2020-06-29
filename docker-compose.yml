@@ -20,6 +20,22 @@ services:
       - 3333:3000
       - 9229:9229
 
+  covid19-worker:
+    build: .
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - MONGO_HOST=covid19-mongo
+    tty: true
+    depends_on:
+      - covid19-mongo
+    networks:
+      - covid19-network
+    links:
+      - covid19-mongo
+    container_name: covid19-worker
+    command: yarn dev:worker
+
   covid19-mongo:
     image: bitnami/mongodb:latest
     container_name: covid19-mongo

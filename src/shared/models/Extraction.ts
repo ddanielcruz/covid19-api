@@ -1,17 +1,19 @@
 import mongoose, { Schema, Document, Types } from 'mongoose';
 import { IPlace } from '@models/Place';
 
-export type IExtraction = Document & {
+export type ExtractionAttr = {
   totalCases: number;
   totalDeaths: number;
   totalRecovered: number;
   totalTests: number;
   activeCases: number;
   criticalCases: number;
-  place: Types.ObjectId | IPlace;
-  createdAt: Date;
-  updatedAt: Date;
+  place: Types.ObjectId | IPlace | string;
+  createdAt?: Date;
+  updatedAt?: Date;
 };
+
+export type IExtraction = Document & ExtractionAttr;
 
 const ExtractionSchema = new Schema(
   {
