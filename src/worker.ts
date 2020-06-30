@@ -6,4 +6,5 @@ const job = new CronJob({
   onTick: extractor.run,
   runOnInit: true,
 });
+
 job.start();
