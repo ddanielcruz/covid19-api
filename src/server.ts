@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import app from './app';
+import app from './api';
 
 const port = process.env.PORT || 3000;
 

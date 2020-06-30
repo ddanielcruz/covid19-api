@@ -1,4 +1,4 @@
-import 'dotenv/config';
+import 'api/node_modules/dotenv/config';
 import mongoose from 'mongoose';
 import cheerio from 'cheerio';
 import axios from 'axios';
