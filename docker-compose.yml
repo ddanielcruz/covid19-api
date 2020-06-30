@@ -1,0 +1,61 @@
+version: '3.6'
+
+services:
+  covid19-api:
+    build: .
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - MONGO_HOST=covid19-mongo
+    tty: true
+    depends_on:
+      - covid19-mongo
+    networks:
+      - covid19-network
+    links:
+      - covid19-mongo
+    container_name: covid19-api
+    command: yarn dev:server
+    ports:
+      - 3333:3000
+      - 9229:9229
+
+  covid19-worker:
+    build: .
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - MONGO_HOST=covid19-mongo
+    tty: true
+    depends_on:
+      - covid19-mongo
+    networks:
+      - covid19-network
+    links:
+      - covid19-mongo
+    container_name: covid19-worker
+    command: yarn dev:worker
+
+  covid19-mongo:
+    image: bitnami/mongodb:latest
+    container_name: covid19-mongo
+    restart: always
+    environment:
+      - ALLOW_EMPTY_PASSWORD=no
+      - MONGODB_USERNAME=${MONGO_USER}
+      - MONGODB_PASSWORD=${MONGO_PASS}
+      - MONGODB_DATABASE=${MONGO_DB}
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-data:/bitnami
+    networks:
+      - covid19-network
+
+networks:
+  covid19-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local

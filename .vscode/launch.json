@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "attach",
+      "protocol": "inspector",
+      "restart": true,
+      "name": "Attach to Docker",
+      "localRoot": "${workspaceFolder}/src",
+      "remoteRoot": "/usr/src/app/src",
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}
