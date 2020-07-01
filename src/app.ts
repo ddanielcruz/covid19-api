@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import routes from './routes';
 import logger from '@config/logger';
 import { createMongoUrl } from '@config/mongo';
+import { configureWorker } from '@config/worker';
 
 class App {
   public express: express.Application;
@@ -16,6 +17,7 @@ class App {
     this.middleware();
     this.database();
     this.routes();
+    configureWorker();
   }
 
   middleware() {

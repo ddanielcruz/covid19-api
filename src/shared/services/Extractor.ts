@@ -1,30 +1,17 @@
-import mongoose from 'mongoose';
 import cheerio from 'cheerio';
 import axios from 'axios';
 import mapKeys from 'lodash/mapKeys';
+import dayjs from 'dayjs';
+import chalk from 'chalk';
 
-import { createMongoUrl } from '@config/mongo';
 import Extraction, { ExtractionAttr } from '@models/Extraction';
 import Place, { IPlace } from '@models/Place';
 
 class Extractor {
   private url: string = 'https://www.worldometers.info/coronavirus';
 
-  constructor() {
-    this.setup();
-  }
-
-  private setup() {
-    mongoose.connect(createMongoUrl(), {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-    });
-  }
-
   run = async () => {
-    console.log('Extracting COVID19 cases');
+    this.log('Starting extraction');
     const $ = await this.fetch();
 
     // Find rows containing countries, territories and conveyances
@@ -32,11 +19,13 @@ class Extractor {
       .first()
       .find('tr')
       .not('.total_row_world');
+    this.log('Successfully extracted rows from Worldometers');
 
     // Parse extracted rows and summarize world total cases
     const cases = this.parseCases($, rows);
     const world = this.summarizeCases(cases);
     cases.unshift(world);
+    this.log('Parsed extracted cases');
 
     // Store extracted places
     const extractedPlaces = cases.map(({ place }) => ({ name: place }));
@@ -44,6 +33,7 @@ class Extractor {
 
     // Finally, store extracted cases
     await this.storeCases(cases, places);
+    this.log('Successfully stored places and extractions');
   };
 
   private fetch = async (): Promise<CheerioStatic> => {
@@ -122,6 +112,13 @@ class Extractor {
 
     await Extraction.create(cases);
   };
+
+  private log(message: string) {
+    let timestamp = dayjs().format('DD/MM/YYYY HH:mm:ss.SSS');
+    timestamp = chalk.green(`[${timestamp}]`);
+
+    console.log(timestamp, message);
+  }
 }
 
 export default new Extractor();

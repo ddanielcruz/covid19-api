@@ -10,6 +10,8 @@ declare global {
       MONGO_PASS: string;
       MONGO_DB: string;
       MONGO_PORT: number;
+      WORKER_INTERVAL?: string;
+      WORKER_RUN_ON_INIT?: string;
     }
   }
 }
