@@ -1,62 +1,98 @@
-# Coronavirus API
+<div align="center">
+  <h1>
+    :syringe: <i>covid19-api</i>
+  </h1>
 
-Coronavirus cases by country API, extracted from [Worldometers](https://www.worldometers.info/coronavirus/). Currently there's only a [simple documentation](https://documenter.getpostman.com/view/3882585/SzYewbGg?version=latest) published on Postman.
+  <p>
+    Coronavirus RESTful API for current cases by country - extracting data from Worldometers
+  </p>
 
-## Getting Started
+  <p align="center">
+    <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/danielccunha/covid19-api?color=%233a86ff">
+    <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/danielccunha/covid19-api?color=%233a86ff">
+    <a href="https://www.linkedin.com/in/daniel-cunha-53053816b/">
+      <img alt="Made by Daniel Cunha" src="https://img.shields.io/badge/made%20by-Daniel%20Cunha-%23?color=%233a86ff">
+    </a>
+    <a href="https://github.com/danielccunha/covid19-api/commits/master">
+      <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/danielccunha/covid19-api?color=%233a86ff">
+    </a>
+    <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen?color=%233a86ff">
+  </p>
+</div>
 
-### Prerequisites
+## :computer: Project
 
-- [Node.js](https://nodejs.org/) for running the project
-- [MongoDB](https://www.mongodb.com/download-center) cluster for storing extracted cases
+Simple COVID19 API developed with Node.js and TypeScript. It periodically extracts cases from [Worldometers][source] and store it on a MongoDB database. This project is under development, and contains only a [simple documentation](docs/Insomnia.json) in the docs folder.
 
-### Installing
+## :rocket: Technologies
 
-1. Clone the repository
+- [TypeScript][typescript]
+- [Node.js][nodejs]
+- [Express][express]
+- [Cheerio][cheerio]
+- [MongoDB][mongodb]
+- [Docker][docker]
+- [Dayjs][dayjs]
+
+## :fire: Usage
+
+To use this project you'll basically have to clone it using [Git][git] and run it using [Docker][docker].
 
 ```sh
+# Cloning the repository
 git clone https://github.com/danielccunha/covid19-api.git
 cd covid19-api
-```
 
-2. Install app dependencies
-
-```sh
-npm install # In case you use NPM
-yarn        # in case you use Yarn
-```
-
-3. Copy `.env.example` file and add your MongoDB URl
-
-```sh
+# Setting up environment variables (MongoDB credentials basically)
 cp .env.example .env
 nano .env
+
+# Running it with Docker on http://localhost:3333
+docker-compose up -d
 ```
 
-Finally, run the project using `npm start` or `yarn start` and access `http://localhost:3000/places`. It should return an empty list because you didn't extract any data yet.
+In case you don't want to use Docker, you'll need to also have installed on your machine [Node.js][nodejs], [Yarn][yarn] and [MongoDB][mongodb]. Also, you'll need to fill all `.env` variables, including commented ones.
 
-### Usage
+```sh
+# Cloning the repository
+git clone https://github.com/danielccunha/covid19-api.git
+cd covid19-api
 
-Last but not least, run `npm run extract` or `yarn extract` to start extracting cases from [Worldometers](https://www.worldometers.info/coronavirus/) and storing it in your database. Whenever you want to fetch updated data just run this script.
+# Setting up environment variables (you'll need to fill all MongoDB variables)
+cp .env.example .env
+nano .env
 
-After that, accessing `http://localhost:3000/places` again, it should return a list containing all the places around the world which is facing COVID-19, including countries, territories and conveyances.
+# Installing dependencies
+yarn
 
-## Built With
+# Running worker which will extract cases hourly
+yarn dev:worker
 
-- [Node.js](https://nodejs.org/)
-- [Express](http://expressjs.com/)
-- [Cheerio](https://cheerio.js.org/)
-- [MongoDB](https://www.mongodb.com/)
+# Finally, running the serve on port 3000
+yarn dev:server
+```
 
-## Contributing
+## :thinking: Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 1. Fork the project
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+3. Commit your changes (`git commit -m 'feat: Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a pull request
 
-## License
+## :memo: License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
+[source]: https://www.worldometers.info/coronavirus/
+[git]: https://git-scm.com/
+[docker]: https://www.docker.com/
+[nodejs]: https://nodejs.org/
+[mongodb]: https://www.mongodb.com/
+[yarn]: https://yarnpkg.com/
+[express]: http://expressjs.com/
+[cheerio]: https://cheerio.js.org/
+[typescript]: https://www.typescriptlang.org/
+[dayjs]: https://github.com/iamkun/dayjs
