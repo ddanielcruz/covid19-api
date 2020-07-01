@@ -11,7 +11,9 @@ export default class PlaceService {
         $gte: parsedDate.startOf('day').toDate(),
         $lte: parsedDate.endOf('day').toDate(),
       },
-    }).populate('place');
+    })
+      .populate('place')
+      .sort({ totalCases: 1 });
 
     const mappedCases = extractions.reverse().reduce((map, extraction) => {
       const place = extraction.place as IPlace;
