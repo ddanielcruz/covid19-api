@@ -9,6 +9,6 @@ routes.get('/places', controllers.Place.index);
 routes.get('/places/:id', middleware.hasValidId, controllers.Place.show);
 
 // Extractions
-routes.get('/extractions/today', controllers.Extraction.today);
+routes.get('/cases/today', controllers.Case.today);
 
 export default routes;

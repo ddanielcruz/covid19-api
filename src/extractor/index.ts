@@ -1,4 +1,3 @@
-import 'api/node_modules/dotenv/config';
 import mongoose from 'mongoose';
 import cheerio from 'cheerio';
 import axios from 'axios';
@@ -25,6 +24,7 @@ class Extractor {
   }
 
   run = async () => {
+    console.log('Extracting COVID19 cases');
     const $ = await this.fetch();
 
     // Find rows containing countries, territories and conveyances
