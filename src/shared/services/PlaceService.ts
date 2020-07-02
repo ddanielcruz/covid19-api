@@ -8,8 +8,9 @@ type PlaceWithLastExtraction = IPlace & {
 };
 
 export default class PlaceService {
-  async findAll(): Promise<IPlace[]> {
-    return await Place.find();
+  async findAll(query: string): Promise<IPlace[]> {
+    const filter = { name: { $regex: query, $options: 'i' } };
+    return await Place.find(filter);
   }
 
   async findOne(id: string | Types.ObjectId): Promise<PlaceWithLastExtraction> {

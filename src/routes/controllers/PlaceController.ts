@@ -5,8 +5,8 @@ class PlaceController {
   private service: PlaceService = new PlaceService();
 
   index = async (request: Request, response: Response): Promise<Response> => {
-    // TODO: Add option to filter by place's name
-    const places = await this.service.findAll();
+    const { query } = request.query;
+    const places = await this.service.findAll(query?.toString() || '');
 
     response.header('X-Total-Count', places.length.toString());
     return response.json(places);
