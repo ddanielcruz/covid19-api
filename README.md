@@ -8,6 +8,7 @@
   </p>
 
   <p align="center">
+  <a href="https://www.codacy.com/manual/danielccunha/covid19-api?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=danielccunha/covid19-api&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/9453e192d7d742f7bc84ac069efefbb9"/></a>
     <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/danielccunha/covid19-api?color=%233a86ff">
     <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/danielccunha/covid19-api?color=%233a86ff">
     <a href="https://www.linkedin.com/in/daniel-cunha-53053816b/">
