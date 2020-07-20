@@ -23,7 +23,7 @@
 
 ## :computer: Project
 
-Simple COVID19 API developed with Node.js and TypeScript. It periodically extracts cases from [Worldometers][source] and store it on a MongoDB database. This project is under development, and contains only a [simple documentation](docs/Insomnia.json) in the docs folder.
+Simple COVID19 API developed with Node.js and TypeScript. It periodically extracts cases from [Worldometers][source] and store it in a MongoDB database. This project was developed for studying purposes, and contains a [simple documentation](docs/Insomnia.json) in the docs folder.
 
 ## :rocket: Technologies
 
